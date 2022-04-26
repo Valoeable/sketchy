@@ -1,43 +1,45 @@
+//default setup of a grid
+
 let grid=document.querySelector(".gridContainer");
+let reset=document.getElementById("reset");
+let s=16;
 
-for(let i=0;i<15;i++){
-    if(i>0){
-        let br=document.createElement("div");
-        br.classList.add("break");
+//"Creation of the new grid" part of the reset
+reset.addEventListener("click",function promptForSize(){
+    let val=prompt("How big do you want your grid to be?");
+    s=parseInt(val);
+    gridCreation(s);
+});
 
-        br.style.flexBasis="100%";
-        br.style.height="0";
-        grid.appendChild(br);
-    }
-    for(let j=0;j<16;j++){
+
+function gridCreation(s){
+
+    grid.style.gridTemplateColumns = `repeat(${s}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${s}, 1fr)`;
+
+    
+
+    for(let j=0;j<s*s;j++){
         let sq=document.createElement("div");
         sq.classList.add("square");
 
-        sq.style.width="30px"
-        sq.style.height="30px"
-        sq.style.border="5px solid black";
-
         sq.addEventListener("mouseover", function changeColor(){
-                    sq.style.backgroundColor='red';
+                let randColor=Math.floor(Math.random()*16777215).toString(16);  //Randomizing of a color
+                    sq.style.backgroundColor="#"+randColor;
                         });
-
-        if(i===0){
-            sq.style.borderTop="10px solid black";
-        }
-
-        if(i===14){
-            sq.style.borderBottom="10px solid black";
-        }
-
-        if(j===0){
-            sq.style.borderLeft="10px solid black";
-        }
-
-        if(j===15){
-            sq.style.borderRight="10px solid black";
-        }
+        //"Clearing" part of the reset
+         reset.addEventListener("click",function resetGrid(){
+            for(let j=0;j<s*s;j++){
+                        
+                sq.style.backgroundColor='transparent';
+                        
+            }
+         });
 
         grid.appendChild(sq);
     }
+
 }
 
+//startup of a default grid
+gridCreation(s);
