@@ -1,3 +1,15 @@
+.mainText{
+    font-family: 'Creepster', cursive;
+    color: #FEFEFE;
+    margin-bottom: 0px;
+}
+
+.mainContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .gridContainer{
     display: grid;
     border: 5px groove #FEFEFE;
@@ -8,17 +20,14 @@
 
 body{
     background-color: #404040;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
 }
 
 #reset{
     margin-top: 20px;
     border: 5px groove #FEFEFE;
     background-color: #404040;
-    color: #FEFEFE;
     font-family: 'Creepster', cursive;
+    color: #FEFEFE;
     font-size: 20px;
     padding: 10px;
     padding-left: 15px;
